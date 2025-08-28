@@ -6,6 +6,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
 
 # C extensions
 *.so
@@ -125,12 +126,14 @@ celerybeat.pid
 
 # Environments
 .env
+*.env
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+.vscode/
 
 # Spyder project settings
 .spyderproject
@@ -172,5 +175,9 @@ poetry.toml
 
 # LSP config files
 pyrightconfig.json
+
+# 기타
+*.swp
+*.bak
 
 # End of https://www.toptal.com/developers/gitignore/api/python
