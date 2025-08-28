@@ -37,7 +37,7 @@
 
 1. git add .
 2. git commit -m "feat:프로젝트 구현한 내용 메시지"
-3. git branch(브런치명 확인)
+3. git branch: 브런치명 확인
 4. git push -u origin (브랜치명)
    -> 팀원들은 메인 브런치 건드리면 안 됨
 
