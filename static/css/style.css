@@ -1,7 +1,14 @@
 body {
     margin: 0px;
+    padding-top: 100px;
     width: 1920px;
     height: 6790px;
+    text-align: center;
+}
+
+nav {
+    background-color: #1F2634;
+    height: 60px;
 }
 
 nav#nav1 ul {
@@ -37,14 +44,19 @@ nav#nav1 > a {
 h2 {
     color: white;
     text-align: center;
+    margin: 0px;
+}
+
+h3 {
+    color: white;
 }
 
 #textBox1 {
     margin: 50px;
-    margin-top: 0px;
+    margin-top: 20px;
     width: 900px;
     height: 500px;
-    font-size: 24px;
+    font-size: 20px;
     resize: none;
     color: white;
     border: none;
@@ -55,6 +67,12 @@ h2 {
 }
 
 #wrap1 {
+    margin: 0px;
     height: 600px;
     background-color: #414753;
+}
+
+.menuBox1 {
+    height: 50px;
+    background-color: #7C7C7C;
 }
