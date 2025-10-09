@@ -32,8 +32,15 @@ nav#nav1 {
     box-sizing: border-box;
 }
 
-nav#nav1 a {
+h2, h3, nav#nav1 a, #textBox1, ul *, .report { 
     color: white;
+}
+
+ul {
+    text-align: left;
+}
+
+nav#nav1 a {
     text-decoration: none;
 }
 
@@ -42,65 +49,84 @@ nav#nav1 > a {
 }
 
 h2 {
-    color: white;
     text-align: center;
-    margin: 0px;
 }
 
 h3 {
-    color: white;
+    padding: 10px;
 }
 
 #textBox1 {
     margin: 50px;
-    margin-top: 20px;
-    width: 900px;
-    height: 500px;
+    margin-top: 10px;
+    width: 800px;
+    height: 400px;
     font-size: 20px;
     resize: none;
-    color: white;
     border: none;
     outline: none;
-    padding: 24px;
-    background-color: #414753;
+    padding: 30px;
     display: inline-block;  
 }
 
-#wrap1 {
-    margin: 0px;
-    height: 600px;
+.suspectPartBox, .addWordBox, #textBox1, .infoBox {
     background-color: #414753;
+    padding: 40px;
 }
 
-.menuBox1 {
+.drugProbBox, .textAnoBox, .drugDictBox,  .drugSlangBox, .footerBox{
+    padding: 40px;
+}
+
+.addWordBox {
+    margin: 0px;
+    height: 600px;
+}
+
+.resultBox {
     height: 50px;
     background-color: #7C7C7C;
 }
 
-ul * {
-    color: white;
-}
-
 .searchBox {
-    width: 900px;
-    height: 20px;
-    border: #5987ff 5px solid;
-    background: none;
-    resize: none;
-    padding: 10px;
+    width: 600px;
+    height: 50px;
+    border: #5987ff 4px solid;
+    margin: 10px;
     display: inline-block;
+    margin-bottom: 80px;
 }
 
-.textBox3 {
+.textBox2, .textBox3 {
     background: none;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    float: left;
+    color: #7C7C7C;
+    width: 535px;
+    padding: 15px;
+    padding-right: 0;
+    display: inline-flex;
 }
 
 .searchButton {
+    background-color: #7c7c7c;
+    float: right;
+    width: 50px;
+    height: 100%;
+    border: none;
+    display: inline-flex;
     
 }
 
 .footerBox {
-
+    text-decoration: none;
     height: 150px;
     background-color: #C3C3C3;
+    color: #414753;
+}
+.footerBox > p {
+     font-size: 24px;
+     
 }
