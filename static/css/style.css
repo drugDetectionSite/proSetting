@@ -1,3 +1,9 @@
+body {
+    margin: 0px;
+    width: 1920px;
+    height: 6790px;
+}
+
 nav#nav1 ul {
     list-style: none;
     padding: 0;
@@ -30,9 +36,12 @@ nav#nav1 > a {
 
 h2 {
     color: white;
+    text-align: center;
 }
 
 #textBox1 {
+    margin: 50px;
+    margin-top: 0px;
     width: 900px;
     height: 500px;
     font-size: 24px;
@@ -41,5 +50,11 @@ h2 {
     border: none;
     outline: none;
     padding: 24px;
+    background-color: #414753;
+    display: inline-block;  
+}
+
+#wrap1 {
+    height: 600px;
     background-color: #414753;
 }
