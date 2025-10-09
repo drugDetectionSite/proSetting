@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>drugDict</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <style>
+            
+        </style>
+    </head>
+    <body style="background-color: #1F2634;">
+        <nav id="nav1">
+            <a href="{{url_for('home')}}">SiteName</a>
+            <ul>
+                <li><a href="{{url_for('textAno')}}">텍스트 분석</a></li>
+                <li><a href="{{url_for('drugDict')}}">마약 은어 사전</a></li>
+                <li><a href="#">이미지</a></li>
+            </ul>
+        </nav>
+        <p>
+            <h2>마약 은어 사전</h2>
+            <textarea>마약 거래 관련 단어를 입력해주세요.</textarea>
+        </p>
+        <p>
+            <h2>마약류 은어</h2>
+        </p>
+        <div id="wrap1">
+            <h2>사전에 없는 단어가 있다면 추가해주세요</h2>
+            <textarea>단어 추가...</textarea>
+            <h2>양식</h2>
+        </div>
+        <footer>
+            
+        </footer>
+    </body>
+</html>

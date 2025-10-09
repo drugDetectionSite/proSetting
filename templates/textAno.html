@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>textAno</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <style>
+            
+        </style>
+    </head>
+    <body style="background-color: #1F2634;">
+        <nav id="nav1">
+            <a href="{{url_for('home')}}">SiteName</a>
+            <ul>
+                <li><a href="{{url_for('textAno')}}">텍스트 분석</a></li>
+                <li><a href="{{url_for('drugDict')}}">마약 은어 사전</a></li>
+                <li><a href="#">이미지</a></li>
+            </ul>
+        </nav>
+        <p>
+            <h2>텍스트 분석</h2>
+            <textarea id="textBox1"></textarea>
+        </p>
+        <div id="wrap1">
+            <h2>의심되는 부분</h2>
+
+            <h2>~~~~~의 가능성이 높음</h2>
+        </div>
+        <p>
+            <h2>이 게시글은 마약 거래 게시글일 가능성이 NN%로 ~~~~</h2>
+        </p>
+        <div id="wrap2">
+            <p>
+                
+            </p>
+        </div>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
