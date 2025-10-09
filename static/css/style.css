@@ -76,3 +76,31 @@ h3 {
     height: 50px;
     background-color: #7C7C7C;
 }
+
+ul * {
+    color: white;
+}
+
+.searchBox {
+    width: 900px;
+    height: 20px;
+    border: #5987ff 5px solid;
+    background: none;
+    resize: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+.textBox3 {
+    background: none;
+}
+
+.searchButton {
+    
+}
+
+.footerBox {
+
+    height: 150px;
+    background-color: #C3C3C3;
+}
