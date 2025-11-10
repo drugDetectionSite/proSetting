@@ -1,8 +1,8 @@
 body {
     margin: 0px;
     padding-top: 100px;
-    width: 1920px;
-    height: 6790px;
+    width: 1692px;
+    height: 3000px;
     text-align: center;
 }
 
@@ -32,7 +32,7 @@ nav#nav1 {
     box-sizing: border-box;
 }
 
-h2, h3, nav#nav1 a, #textBox1, ul *, .report { 
+h2, h3, nav#nav1 a, #textBox1, ul *, .report, .infoBox { 
     color: white;
 }
 
@@ -50,6 +50,7 @@ nav#nav1 > a {
 
 h2 {
     text-align: center;
+    padding: 10px;
 }
 
 h3 {
@@ -59,42 +60,72 @@ h3 {
 #textBox1 {
     margin: 50px;
     margin-top: 10px;
-    width: 800px;
+    width: 1200px;
     height: 400px;
     font-size: 20px;
     resize: none;
     border: none;
     outline: none;
     padding: 30px;
-    display: inline-block;  
+    display: inline-block; 
+    border-radius: 20px; 
 }
 
 .suspectPartBox, .addWordBox, #textBox1, .infoBox {
     background-color: #414753;
     padding: 40px;
+    text-align: left;
 }
 
-.drugProbBox, .textAnoBox, .drugDictBox,  .drugSlangBox, .footerBox{
+.suspectPartBox, .drugProbBox, .infoBox, .drugSlangBox, .addWordBox {
+    min-height: 600px;
+    line-height: 2;
+    font-size: 22px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+.report {
+    display: block;
+    text-align: right;
+}
+
+.drugProbBox, .textAnoBox, .drugDictBox, .footerBox{
     padding: 40px;
 }
 
-.addWordBox {
-    margin: 0px;
-    height: 600px;
+.drugSlangBox{
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
 
 .resultBox {
     height: 50px;
-    background-color: #7C7C7C;
+    background-color: #5987ff;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
 }
 
 .searchBox {
     width: 600px;
     height: 50px;
     border: #5987ff 4px solid;
-    margin: 10px;
+    text-align: center;
     display: inline-block;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+}
+
+.suspectPartBox{
+  position: relative;
+}
+
+#kindMessage{
+  position: absolute;
+  bottom: 50px;
+  margin: auto;
+  text-align: center;
+  
 }
 
 .textBox2, .textBox3 {
@@ -111,22 +142,42 @@ h3 {
 }
 
 .searchButton {
-    background-color: #7c7c7c;
+    background-color: transparent;
     float: right;
     width: 50px;
     height: 100%;
     border: none;
     display: inline-flex;
-    
+    border-radius: 5px;
+}
+
+.addWordBox {
+    text-align: center;
+}
+
+.infoBox a {
+    text-decoration: none;
 }
 
 .footerBox {
-    text-decoration: none;
     height: 150px;
     background-color: #C3C3C3;
     color: #414753;
+    text-align: left;
+    padding-left: 200px;
+    padding-right: 200px;
 }
+
+.footerBox a {
+    text-decoration: none;
+    color: #414753;
+    margin-right: 30px;
+}
+
 .footerBox > p {
      font-size: 24px;
-     
+}
+
+.suspectPartBox li {
+    list-style: none;
 }
