@@ -50,7 +50,7 @@ nav#nav1 > a, #reportNav {
     margin: 0;
 }
 
-#textBox1, .toggleHeader, a, .submitButton { 
+#textBox1, .toggleHeader, a, .submitButton, .toggleContent textarea { 
     color: #fff;
 }
 
@@ -116,23 +116,34 @@ h3 {
     border-radius: 30px;
 }
 
+.bannerTextAno a {
+    float: right;
+}
+
+.bannerDrugDict a {
+    float: left;
+}
+
 .bannerTextAno {
     text-align: left;
 }
 
 .bannerDrugDict {
     text-align: right;
+}
+
+.bannerDrugDict .lineBox {
     float: right;
 }
 
 .bannerTextAno p, .bannerDrugDict p {
     color: #5987ff;
-    margin: 50px 0 130px 0;
+    margin: 70px 0 220px 0;
 }
 
 .bannerTextAno, .bannerDrugDict {
-    height: 400px;
-    padding: 100px 200px 100px 200px;
+    height: 480px;
+    padding: 100px 200px 160px 200px;
 }
 
 .suspectPartBox, .drugProbBox, .drugSlangBox, .addWordBox {
@@ -161,13 +172,18 @@ h3 {
     padding-top: 40px;
 }
 
-.resultBox, .lineBox {
+.resultBox, .lineBox, .lineBox2 {
     border-bottom: 1.5px solid #5987ff;
 }
 
-.lineBox {
+.lineBox, .lineBox2 {
     width: 220px;
     padding: 0 30px 0 30px;
+}
+
+.lineBox2 {
+    margin: 0 auto;
+    margin-bottom: 460px;
 }
 
 .resultBox {
@@ -180,7 +196,6 @@ h3 {
 .searchBox, .toggleHeader {
     width: 700px;
     height: 50px;
-    outline: #5987ff 2px solid;
     text-align: center;
     display: inline-block;
     border-radius: 10px;
@@ -188,9 +203,10 @@ h3 {
 
 .searchBox {
     margin-bottom: 70px;
+    outline: #5987ff 2px solid;
 }
 
-.searchBox:focus-within, .toggleHeader:focus, .submitButton:active {
+.searchBox:focus-within, .submitButton:active {
     outline: 2px solid #ffffff;
 }
 
@@ -218,15 +234,20 @@ h3 {
     display: inline-flex;
 }
 
-.searchButton {
+.searchButton, .toggleButton {
     background-color: transparent;
     float: right;
     width: 50px;
     height: 100%;
-    border: none;
+    border: none; 
     display: inline-flex;
     border-radius: 5px;
     transition: transform 0.3s;
+}
+
+.toggleButton {
+    justify-content: center;
+    align-items: center;
 }
 
 .addWordBox {
@@ -281,11 +302,20 @@ h3 {
 .toggleHeader {
     background: #1C1C1C;
     border: 0;
+    padding: 30px 10px 30px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     font-size: 18px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.reasonCho {
+    margin: 35px 0 20px 0;
+    text-align: left;
+    padding: 40px 200px 0 200px;
 }
 
 /* 펼쳐지는 영역 */
@@ -295,38 +325,58 @@ h3 {
     transition: max-height 0.3s ease;
 }
 
-/* textarea */
 .toggleContent textarea {
     width: 100%;
-    height: 120px;
-    margin-top: 10px;
+    height: 300px;
+    margin: 0;
     resize: none;
+    outline: none;
     border-radius: 10px;
-    padding: 10px;
-    border: none;
-    font-size: 18px;
+    padding: 30px;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-color: #1C1C1C;
 }
 
-/* 카운트 */
+.toggleContent textarea, .toggleHeader {
+    border: 2px solid #5987ff;
+}
+
 .count {
     text-align: right;
-    font-size: 12px;
-    color: #aaa;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.toggleBox {
+    padding: 15px 200px 15px 200px;
+    margin-bottom: 0;
 }
 
 /* ✅ 열렸을 때 상태 */
-.toggleBox.active .toggleContent {
-    max-height: 300px;
+.toggleBox.active .toggleHeader {
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
 }
 
-.toggleBox.active .searchButton {
+.toggleBox.active .toggleContent {
+    max-height: 1000px;
+}
+
+.toggleBox.active .toggleContent textarea {
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.toggleBox.active .toggleButton {
     transform: rotate(180deg);
 }
 
 .submitButton {
-    width: 1220px;
+    margin-top: 150px;
+    width: 100%;
     border: none;
-    height: 70px;
+    height: 80px;
     background-color: #5987ff;
     border-radius: 10px;
     font-size: 20px;

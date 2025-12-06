@@ -5,16 +5,16 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         
     </head>
-    <body>
+    <body style="height: 89vh">
         <nav id="reportNav">
             <a href="{{url_for('drugDict')}}">&lt;</a>
             <p>사전에 문제가 있나요?</p>
         </nav>
-        <h2>사유를 선택해주세요.</h2>
+        <h2 class="reasonCho">사유를 선택해주세요.</h2>
         <div class="toggleBox">
             <button class="toggleHeader">
-                <p>실제로 없는 단어가 있어요.</p>
-                <p class="searchButton">▲</p>
+                <p>존재하지 않는 단어가 있어요.</p>
+                <p class="toggleButton">▲</p>
             </button>
             <div class="toggleContent">
                 <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
@@ -24,7 +24,7 @@
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>뜻이 잘못되었어요.</p>
-                <p class="searchButton">▲</p>
+                <p class="toggleButton">▲</p>
             </button>
             <div class="toggleContent">
                 <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
@@ -34,7 +34,7 @@
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>예문/유의어가 잘못되었어요.</p>
-                <p class="searchButton">▲</p>
+                <p class="toggleButton">▲</p>
             </button>
             <div class="toggleContent">
                 <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
@@ -44,13 +44,24 @@
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>오타가 있어요.</p>
-                <p class="searchButton">▲</p>
+                <p class="toggleButton">▲</p>
             </button>
             <div class="toggleContent">
                 <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
                 <div class="count">0/1000</div>
             </div>
         </div>
+        <div class="toggleBox">
+            <button class="toggleHeader">
+                <p>기타 문제사항이 있어요.</p>
+                <p class="toggleButton">▲</p>
+            </button>
+            <div class="toggleContent">
+                <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
+                <div class="count">0/1000</div>
+            </div>
+        </div>
+
         <button class="submitButton" type="submit">신고하기</button>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
