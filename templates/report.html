@@ -5,24 +5,53 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         
     </head>
-    <body style="background-color: #1C1C1C; height: 1000px;">
+    <body>
         <nav id="reportNav">
             <a href="{{url_for('drugDict')}}">&lt;</a>
             <p>사전에 문제가 있나요?</p>
         </nav>
-        <h2>사유가 무엇인가요?</h2>
+        <h2>사유를 선택해주세요.</h2>
         <div class="toggleBox">
             <button class="toggleHeader">
-                <p>항목 1이에요</p>
+                <p>실제로 없는 단어가 있어요.</p>
                 <p class="searchButton">▲</p>
             </button>
-
             <div class="toggleContent">
                 <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
                 <div class="count">0/1000</div>
             </div>
         </div>
-        <button class="submit-button">신고하기</button>
+        <div class="toggleBox">
+            <button class="toggleHeader">
+                <p>뜻이 잘못되었어요.</p>
+                <p class="searchButton">▲</p>
+            </button>
+            <div class="toggleContent">
+                <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
+                <div class="count">0/1000</div>
+            </div>
+        </div>
+        <div class="toggleBox">
+            <button class="toggleHeader">
+                <p>예문/유의어가 잘못되었어요.</p>
+                <p class="searchButton">▲</p>
+            </button>
+            <div class="toggleContent">
+                <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
+                <div class="count">0/1000</div>
+            </div>
+        </div>
+        <div class="toggleBox">
+            <button class="toggleHeader">
+                <p>오타가 있어요.</p>
+                <p class="searchButton">▲</p>
+            </button>
+            <div class="toggleContent">
+                <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
+                <div class="count">0/1000</div>
+            </div>
+        </div>
+        <button class="submitButton" type="submit">신고하기</button>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>

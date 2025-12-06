@@ -1,9 +1,10 @@
 body {
     margin: 0px;
     padding-top: 100px;
-    width: 1692px;
     height: 100vh;
     text-align: center;
+    background-color: #1C1C1C;
+    color: #fff;
 }
 
 nav {
@@ -36,7 +37,6 @@ nav#nav1, #reportNav {
 #reportNav a{
     font-size: 28px;
     text-decoration: none;
-    color: #fff;
 }
 
 nav#nav1 > a, #reportNav {
@@ -50,7 +50,7 @@ nav#nav1 > a, #reportNav {
     margin: 0;
 }
 
-h2, h3, nav#nav1 a, #reportNav, #textBox1, ul *, .report, .banner, .toggleHeader { 
+#textBox1, .toggleHeader, a, .submitButton { 
     color: #fff;
 }
 
@@ -104,7 +104,35 @@ h3 {
     font-size: 22px;
     height: 620px;
     padding-left: 80px;
+    margin-bottom: 80px;
     display: inline-block; 
+}
+
+.bannerTextAno a, .bannerDrugDict a {
+    text-decoration: none;
+    font-size: 22px;
+    background-color: #5987ff;
+    padding: 10px 50px 10px 50px;
+    border-radius: 30px;
+}
+
+.bannerTextAno {
+    text-align: left;
+}
+
+.bannerDrugDict {
+    text-align: right;
+    float: right;
+}
+
+.bannerTextAno p, .bannerDrugDict p {
+    color: #5987ff;
+    margin: 50px 0 130px 0;
+}
+
+.bannerTextAno, .bannerDrugDict {
+    height: 400px;
+    padding: 100px 200px 100px 200px;
 }
 
 .suspectPartBox, .drugProbBox, .drugSlangBox, .addWordBox {
@@ -124,27 +152,28 @@ h3 {
     text-align: right;
 }
 
-.drugProbBox, .textAnoBox, .drugDictBox, .footerBox{
+.drugProbBox, .textAnoBox, .drugDictBox{
     padding: 40px;
 }
 
 .drugSlangBox{
-    padding-bottom: 40px;
+    padding-bottom: 100px;
     padding-top: 40px;
 }
 
 .resultBox, .lineBox {
-    padding: 30px;
     border-bottom: 1.5px solid #5987ff;
 }
 
 .lineBox {
-    width: 100px;
+    width: 220px;
+    padding: 0 30px 0 30px;
 }
 
 .resultBox {
     width: 1220px;
-    height: 50px;
+    height: 40px;
+    padding: 30px;
     display: inline-block;
 }
 
@@ -154,11 +183,14 @@ h3 {
     outline: #5987ff 2px solid;
     text-align: center;
     display: inline-block;
-    margin-bottom: 60px;
     border-radius: 10px;
 }
 
-.searchBox:focus-within, .toggleHeader:focus {
+.searchBox {
+    margin-bottom: 70px;
+}
+
+.searchBox:focus-within, .toggleHeader:focus, .submitButton:active {
     outline: 2px solid #ffffff;
 }
 
@@ -199,6 +231,7 @@ h3 {
 
 .addWordBox {
     text-align: center;
+    padding-bottom: 60px;
 }
 
 .footerBox {
@@ -207,6 +240,7 @@ h3 {
     text-align: left;
     padding-left: 200px;
     padding-right: 200px;
+    padding: 50px;
 }
 
 .footerBox a {
@@ -251,6 +285,7 @@ h3 {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    font-size: 18px;
 }
 
 /* 펼쳐지는 영역 */
@@ -269,7 +304,7 @@ h3 {
     border-radius: 10px;
     padding: 10px;
     border: none;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 /* 카운트 */
@@ -286,4 +321,13 @@ h3 {
 
 .toggleBox.active .searchButton {
     transform: rotate(180deg);
+}
+
+.submitButton {
+    width: 1220px;
+    border: none;
+    height: 70px;
+    background-color: #5987ff;
+    border-radius: 10px;
+    font-size: 20px;
 }
