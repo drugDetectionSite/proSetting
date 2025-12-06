@@ -320,7 +320,7 @@ h3 {
 
 /* 펼쳐지는 영역 */
 .toggleContent {
-    max-height: 0;              /* ✅ 기본 접힘 */
+    max-height: 0;       
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
@@ -353,7 +353,7 @@ h3 {
     margin-bottom: 0;
 }
 
-/* ✅ 열렸을 때 상태 */
+/* 열렸을 때 상태 */
 .toggleBox.active .toggleHeader {
     border-bottom: none;
     border-radius: 10px 10px 0 0;
