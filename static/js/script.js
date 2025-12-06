@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 이 안에 기존 코드를 모두 넣습니다.
-    
+document.addEventListener('DOMContentLoaded', function() {  
     // 조건에 따라 변경될 변수 정의
     let score = 85;
     let drugKind; // 여기에 조건에 맞는 단어가 들어갈 변수
@@ -23,22 +21,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     let drugProbInt = 80;
-    let probResult;
+    let probResult = "";
+    let className = "";
 
     if (drugProbInt >= 80) {
         probResult = "아주 높습니다";
+        className = "probVeryHigh"
     } else if (drugProbInt >= 60) {
         probResult = "높습니다";
+        className = "probHigh"
     } else if (drugProbInt >= 40) {
         probResult = "보통입니다";
+        className = "probMedium"
     } else {
         probResult = "낮습니다";
+        className = "probLow"
     }
 
-    const drugProbMessage = "이 게시글은 마약 게시글일 가능성이 " + drugProbInt + "%로 " + probResult;
+    const drugProbMessage = "이 게시글은 마약 게시글일 가능성이 " + drugProbInt + "%로 <span class='" + className + "'>" + probResult + "</span>";
     const probResultMessage = document.getElementById('drugProbMessage');
     if (probResultMessage) {
-        probResultMessage.textContent = drugProbMessage;
+        probResultMessage.innerHTML = drugProbMessage;
     }
 });
 
@@ -67,6 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json()) // 응답을 JSON 객체로 파싱
         .then(data => {
             // 서버에서 받은 데이터(data.probability, data.drug_kind 등)를 사용
+            let className = "";
+            if (data.prob_result_text === "아주 높습니다") className = "probVeryHigh";
+            else if (data.prob_result_text === "높습니다") className = "probHigh";
+            else if (data.prob_result_text === "보통입니다") className = "probMedium";
+            else className = "probLow";
 
             // 1) 마약 종류 메시지 업데이트
             const kindMessage = data.drug_kind + "의 가능성이 있음";
@@ -79,7 +87,12 @@ document.addEventListener('DOMContentLoaded', function() {
                                     data.probability + "%로 " + 
                                     data.prob_result_text;
             if (probResultMessage) {
-                probResultMessage.textContent = drugProbMessage;
+                probResultMessage.innerHTML =
+                "이 게시글은 마약 게시글일 가능성이 " +
+                data.probability + "%로 " +
+                "<span class='" + className + "'>" +
+                data.prob_result_text +
+                "</span>";
             }
         })
         .catch(error => {
@@ -99,4 +112,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // 페이지 로드 시 초기 상태로 한 번 호출 (빈 문자열 분석)
         analyzeText(textBox.value);
     }
+});
+
+document.querySelectorAll('.toggleHeader').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const box = btn.parentElement;
+        box.classList.toggle('active');
+    });
+});
+
+document.querySelectorAll('.toggleContent textarea').forEach(textarea => {
+    const count = textarea.nextElementSibling;
+    const MAX = 1000;
+
+    textarea.addEventListener('input', () => {
+        if (textarea.value.length > MAX) {
+            textarea.value = textarea.value.slice(0, MAX); // ✅ 강제 잘라내기
+        }
+        count.textContent = `${textarea.value.length}/1000`;
+    });
 });

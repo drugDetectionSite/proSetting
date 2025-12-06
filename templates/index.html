@@ -3,11 +3,8 @@
     <head>
         <title>HOME</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <style>
-            
-        </style>
     </head>
-    <body style="background-color: #1F2634;">
+    <body style="background-color: #1C1C1C;">
         <nav id="nav1">
             <a href="{{url_for('home')}}">SiteName</a>
             <ul>
@@ -16,10 +13,34 @@
                 <li><a href="#">이미지</a></li>
             </ul>
         </nav>
-        <p>
-        </p>
-        <footer>
-            
-        </footer>
+        <div class="banner">
+            <h1>마약 거래<br>감별 사이트</h1>
+            <p>사용자가 내용을 입력하면 마약 거래인지 감별해줍니다.</p>
+        </div>
+        <h1 class="resultBox">
+            사이트 소개
+        </h1>
+        <div class="bannerTextAno">
+            <h1>텍스트 분석</h1>
+            <div class="lineBox"></div>
+            <p>사용자가 마약 거래 의심되는 게시글 발견 시 내용을<br>입력하면 마약 거래 게시글일지 아닌지 판별해줍니다.</p>
+            <a href="{{url_for('textAno')}}">바로가기</a>
+        </div>
+        <div class="bannerDrugDict">
+            <h1>마약 은어 사전</h1>
+            <div class="lineBox"></div>
+            <p>마약과 관련된 은어들이 어떤 뜻을 가졌는지<br>검색해볼 수 있습니다.</p>
+            <a href="{{url_for('drugDict')}}">바로가기</a>
+        </div>
+        <div class="footerBox">
+            <p>로고이미지/아이콘</p>
+            <br>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">이용약관</a>
+            <a href="#">청소년보호정책</a>
+            <a href="#">고객센터</a>
+            <a href="#">SNS링크1</a>
+            <a href="#">SNS링크2</a>
+        </div>
     </body>
 </html>

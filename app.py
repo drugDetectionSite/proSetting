@@ -33,6 +33,10 @@ def textAno():
 def drugDict():
     return render_template('drugDict.html')
 
+@app.route('/report')
+def report():
+    return render_template('report.html')
+
 # 새로운 분석 API 엔드포인트 추가
 @app.route('/api/analyze-text', methods=['POST'])
 def analyze_text():
