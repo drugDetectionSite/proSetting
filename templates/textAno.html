@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
+<!-- 남혜진 작업 파일 -->
 <html>
     <head>
-        <title>textAno</title>
+        <title>textAno</title>  <!-- flask 문법 형식으로 css와 js파일 불러옴 -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <style>
-            
-        </style>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </head>
-    <body style="background-color: #1F2634;">
+    <body>
         <nav id="nav1">
             <a href="{{url_for('home')}}">SiteName</a>
             <ul>
@@ -16,41 +15,36 @@
                 <li><a href="#">이미지</a></li>
             </ul>
         </nav>
-        <p>
+        <div class="textAnoBox">
             <h2>텍스트 분석</h2>
             <textarea id="textBox1"></textarea>
-        </p>
-        <div class="menuBox1">
+        </div>
+        <div class="resultBox">
             <h3>결과</h3>
         </div>
-        <div id="wrap1">
-            <h2>의심되는 부분</h2>
-            <p>
-                <ul>
-                    <li>단어: </li>
-                    <li>해시태그: </li>
-                    <li>거래방법: </li>
-                </ul>
-            </p>
-            <h2>~~~~~의 가능성이 높음</h2>
+        <div class="suspectPartBox">
+            <div class="suspectInnerPartBox">
+                <h2>의심되는 부분</h2>
+                <p>
+                    <ul>
+                        <li>단어: </li>
+                        <li>해시태그: </li>
+                        <li>거래방법: </li>
+                    </ul>
+                </p>
+            </div>
+            <h2 id="kindMessage">마약 가능성 표시란</h2>
         </div>
-        <p>
-            <h2>이 게시글은 마약 거래 게시글일 가능성이 NN%로 ~~~~</h2>
-        </p>
-        <div id="wrap2">
-            <p>
-                법적 정보: 어쩌고저쩌고 자시고 나발이고
-                신고 방법: 마약범죄 의심 또는 발견 시
-                <ul>
-                    <li>검찰청&#40;국번없이 1301&#41;,</li>
-                    <li>경찰청&#40;국번없이 112&#41;,</li>
-                    <li>관세청&#40;국번없이 125&#41;으로 신고하면 됩니다.</li>
-                </ul>
-                마약류와 관련된 범죄를 알게 된 경우 미리 신고하면 보상금을 받을 수 있습니다.
-            </p>
+        <div class="resultBox">
+
         </div>
+        <div class="drugProbBox">
+                <h2 id="drugProbMessage">이 게시글은 마약 거래 게시글일 가능성이 %로 </h2>
+                <p></p>
+            </div>
         <div class="footerBox">
             <p>로고이미지/아이콘</p>
+            <br>
             <a href="#">개인정보처리방침</a>
             <a href="#">이용약관</a>
             <a href="#">청소년보호정책</a>
@@ -58,5 +52,6 @@
             <a href="#">SNS링크1</a>
             <a href="#">SNS링크2</a>
         </div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>

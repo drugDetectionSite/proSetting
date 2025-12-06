@@ -7,7 +7,7 @@
             
         </style>
     </head>
-    <body style="background-color: #1F2634;">
+    <body>
         <nav id="nav1">
             <a href="{{url_for('home')}}">SiteName</a>
             <ul>
@@ -16,43 +16,79 @@
                 <li><a href="#">이미지</a></li>
             </ul>
         </nav>
-        <p>
+        <div class="drugDictBox">
             <h2>마약 은어 사전</h2>
             <form class="searchBox">
-                <input class="textBox2" type="text" placeholder="마약 거래 관련 단어를 입력해주세요.">
+                <input class="textBox2" type="text" placeholder="마약 거래 관련 단어를 입력해주세요...">
                 <button class="searchButton" type="submit">
-
+                    <img src="../static/images/searchIcon.png" alt="searchIcon">
                 </button>
             </form>
-        </p>
-        <p>
+        </div>
+        <div class="resultBox">
+            <h3>결과</h3>
+        </div>
+        <div class="drugSlangBox">
             <h2>마약류 은어</h2>
-        </p>
-        <div id="wrap1">
-            <h2>사전에 없는 단어가 있다면 추가해주세요</h2>
-            <form class="searchBox">
-                <input class="textBox3" type="text" placeholder="단어 추가...">
-                <button class="searchButton" type="submit">
-                    
-                </button>
-            </form>
-            <h2>양식</h2>
             <p>
-                <ul>
-                    <li>은어1: </li>
-                    <ul>
+                <p>
+                    <ul class="slangBox">
+                        <li>은어1: </li>
                         <ol>
                             <li>뜻 1</li>
                             <li>뜻 2</li>
                         </ol>
-                        <li>예문: 예문 내용들</li>
-                        <li>유의어: 유의어단어</li>
+                        <ul class="slangExBox">
+                            <li>예문: 예문 내용들</li>
+                            <li>유의어: 유의어단어</li>
+                        </ul>
                     </ul>
-                </ul>
+                    <br>
+                </p>
+                <p>
+                    <ul class="slangBox">
+                        <li>은어2: </li>
+                        <ol>
+                            <li>뜻 1</li>
+                            <li>뜻 2</li>
+                        </ol>
+                        <ul class="slangExBox">
+                            <li>예문: 예문 내용들</li>
+                            <li>유의어: 유의어단어</li>
+                        </ul>
+                    </ul>
+                </p>
+            </p>
+        </div>
+        <div class="addWordBox">
+            <h2>사전에 없는 단어가 있다면 추가해주세요</h2>
+            <form class="searchBox">
+                <input class="textBox3" type="text" placeholder="단어 추가...">
+                <button class="searchButton" type="submit">
+                    <img src="../static/images/add.png" alt="addIcon">
+                </button>
+            </form>
+            <h3 class="resultBox">양식</h3>
+            <p>
+                <p>
+                    <ul class="slangBox">
+                        <li>은어1: </li>
+                        <ol>
+                            <li>뜻 1</li>
+                            <li>뜻 2</li>
+                        </ol>
+                        <ul class="slangExBox">
+                            <li>예문: 예문 내용들</li>
+                            <li>유의어: 유의어단어</li>
+                        </ul>
+                    </ul>
+                </p>
+                <a class="report" href="{{url_for('report')}}">사전에 문제가 있나요?</a>
             </p>
         </div>
         <div class="footerBox">
             <p>로고이미지/아이콘</p>
+            <br>
             <a href="#">개인정보처리방침</a>
             <a href="#">이용약관</a>
             <a href="#">청소년보호정책</a>
