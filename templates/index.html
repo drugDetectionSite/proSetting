@@ -1,3 +1,4 @@
+<!-- 남혜진 작업 파일 -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,14 +6,16 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
+        <!--네비게이션 바-->
         <nav id="nav1">
-            <a href="{{url_for('home')}}">SiteName</a>
+            <a href="{{url_for('home')}}">DruTion</a>
             <ul>
                 <li><a href="{{url_for('textAno')}}">텍스트 분석</a></li>
                 <li><a href="{{url_for('drugDict')}}">마약 은어 사전</a></li>
                 <li><a href="#">이미지</a></li>
             </ul>
         </nav>
+        <!--메인 배너-->
         <div class="banner">
             <h1>마약 거래<br>감별 사이트</h1>
             <p>사용자가 내용을 입력하면 마약 거래인지 감별해줍니다.</p>
@@ -20,12 +23,14 @@
         <h1 class="resultBox">
             사이트 소개
         </h1>
+        <!--텍스트 분석 기능 소개란-->
         <div class="bannerTextAno">
             <h1>텍스트 분석</h1>
             <div class="lineBox"></div>
             <p>사용자가 마약 거래 의심되는 게시글 발견 시<br>내용을 입력하면 마약 거래 게시글일지 아닌지 판별해줍니다.</p>
             <a href="{{url_for('textAno')}}">바로가기</a>
         </div>
+        <!--마약 은어 사전 기능 소개란-->
         <div class="bannerDrugDict">
             <h1>마약 은어 사전</h1>
             <div class="lineBox"></div>
@@ -33,6 +38,7 @@
             <a href="{{url_for('drugDict')}}">바로가기</a>
         </div>
         <div class="lineBox2"></div>
+        <!--푸터 박스 부분-->
         <div class="footerBox">
             <p>로고이미지/아이콘</p>
             <br>
