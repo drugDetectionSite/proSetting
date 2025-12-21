@@ -1,3 +1,6 @@
+/* 남혜진 작업 파일 */
+
+/* 기본 배경 설정 */
 body {
     margin: 0px;
     padding-top: 100px;
@@ -7,6 +10,7 @@ body {
     color: #fff;
 }
 
+/* 상단 네비게이션 바 설정 */
 nav {
     background-color: #1C1C1C;
     height: 60px;
@@ -50,6 +54,7 @@ nav#nav1 > a, #reportNav {
     margin: 0;
 }
 
+/* 대부분의 글자 색상 흰색 설정 */
 #textBox1, .toggleHeader, a, .submitButton, .toggleContent textarea { 
     color: #fff;
 }
@@ -75,6 +80,7 @@ h3 {
     padding: 10px;
 }
 
+/* 글자 입력란 */
 #textBox1 {
     margin: 50px;
     margin-top: 10px;
@@ -88,6 +94,7 @@ h3 {
     display: inline-block; 
 }
 
+/* 해당 글자 입력란 선택 시 아웃라인 나타남 */
 #textBox1:focus {
     outline: 1.5px solid #5987ff;
 }
@@ -99,6 +106,7 @@ h3 {
     border-radius: 20px;
 }
 
+/* 메인 페이지 배너 설정 */
 .banner {    
     width: 1200px;
     font-size: 22px;
@@ -146,6 +154,7 @@ h3 {
     padding: 100px 200px 160px 200px;
 }
 
+/* 글자 출력되는 부분들 화면 사이즈 조정 */
 .suspectPartBox, .drugProbBox, .drugSlangBox, .addWordBox {
     min-height: 600px;
     line-height: 2;
@@ -158,6 +167,7 @@ h3 {
     color:#5987ff;
 }
 
+/* 사전에 문제가 있나요? 부분 */
 .report {
     display: block;
     text-align: right;
@@ -172,6 +182,7 @@ h3 {
     padding-top: 40px;
 }
 
+/* 화면 분할해주는 파란 선 */
 .resultBox, .lineBox, .lineBox2 {
     border-bottom: 1.5px solid #5987ff;
 }
@@ -193,6 +204,7 @@ h3 {
     display: inline-block;
 }
 
+/* 파란 테두리 네모 상자 */
 .searchBox, .toggleHeader {
     width: 700px;
     height: 50px;
@@ -206,6 +218,7 @@ h3 {
     outline: #5987ff 2px solid;
 }
 
+/* 선택 시 흰 테두리 */
 .searchBox:focus-within, .submitButton:active {
     outline: 2px solid #ffffff;
 }
@@ -214,6 +227,7 @@ h3 {
   position: relative;
 }
 
+/* 마약 가능성 표시란 */
 #kindMessage{
   padding-top: 250px;
   margin: auto;
@@ -221,6 +235,7 @@ h3 {
   display: inline-block;
 }
 
+/* 글자 입력받는 검색용 박스 */
 .textBox2, .textBox3 {
     background: none;
     font-size: 20px;
@@ -255,6 +270,7 @@ h3 {
     padding-bottom: 60px;
 }
 
+/* 가장 하단 푸터 박스 */
 .footerBox {
     height: 150px;
     color: #5987ff;
@@ -278,6 +294,7 @@ h3 {
     list-style: none;
 }
 
+/* 확률 별 글자 색상들 */
 .probVeryHigh {
     color: #EF7B7B;
     font-weight: bold;

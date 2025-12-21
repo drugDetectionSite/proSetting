@@ -1,21 +1,21 @@
+<!-- 남혜진 작업 파일 -->
 <!DOCTYPE html>
 <html>
     <head>
         <title>drugDict</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <style>
-            
-        </style>
     </head>
     <body>
+        <!--네비게이션 바-->
         <nav id="nav1">
-            <a href="{{url_for('home')}}">SiteName</a>
+            <a href="{{url_for('home')}}">DruTion</a>
             <ul>
                 <li><a href="{{url_for('textAno')}}">텍스트 분석</a></li>
                 <li><a href="{{url_for('drugDict')}}">마약 은어 사전</a></li>
                 <li><a href="#">이미지</a></li>
             </ul>
         </nav>
+        <!--마약 은어 사전 검색 부분-->
         <div class="drugDictBox">
             <h2>마약 은어 사전</h2>
             <form class="searchBox">
@@ -28,6 +28,7 @@
         <div class="resultBox">
             <h3>결과</h3>
         </div>
+        <!--마약 은어와 뜻 등 사전 기능 출력-->
         <div class="drugSlangBox">
             <h2>마약류 은어</h2>
             <p>
@@ -60,6 +61,7 @@
                 </p>
             </p>
         </div>
+        <!--은어 추가 부분-->
         <div class="addWordBox">
             <h2>사전에 없는 단어가 있다면 추가해주세요</h2>
             <form class="searchBox">
@@ -86,6 +88,7 @@
                 <a class="report" href="{{url_for('report')}}">사전에 문제가 있나요?</a>
             </p>
         </div>
+        <!--푸터 박스-->
         <div class="footerBox">
             <p>로고이미지/아이콘</p>
             <br>

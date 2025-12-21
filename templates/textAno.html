@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
 <!-- 남혜진 작업 파일 -->
+<!DOCTYPE html> 
 <html>
     <head>
         <title>textAno</title>  <!-- flask 문법 형식으로 css와 js파일 불러옴 -->
@@ -8,13 +8,14 @@
     </head>
     <body>
         <nav id="nav1">
-            <a href="{{url_for('home')}}">SiteName</a>
+            <a href="{{url_for('home')}}">DruTion</a>
             <ul>
                 <li><a href="{{url_for('textAno')}}">텍스트 분석</a></li>
                 <li><a href="{{url_for('drugDict')}}">마약 은어 사전</a></li>
                 <li><a href="#">이미지</a></li>
             </ul>
         </nav>
+        <!--게시글 입력란-->
         <div class="textAnoBox">
             <h2>텍스트 분석</h2>
             <textarea id="textBox1"></textarea>
@@ -22,26 +23,30 @@
         <div class="resultBox">
             <h3>결과</h3>
         </div>
+        <!--마약 거래 게시글로 의심되는 부분 및 의심되는 마약 종류-->
         <div class="suspectPartBox">
             <div class="suspectInnerPartBox">
                 <h2>의심되는 부분</h2>
                 <p>
                     <ul>
-                        <li>단어: </li>
-                        <li>해시태그: </li>
-                        <li>거래방법: </li>
+                        <li>단어: <span id="sus-word">없음</span></li>
+                        <li>해시태그: <span id="sus-hashtag">없음</span></li>
+                        <li>거래방법: <span id="sus-method">없음</span></li>
                     </ul>
                 </p>
             </div>
+            
             <h2 id="kindMessage">마약 가능성 표시란</h2>
         </div>
         <div class="resultBox">
 
         </div>
+        <!--마약 거래 게시글일 확률 출력, 게시글 분석 결과-->
         <div class="drugProbBox">
-                <h2 id="drugProbMessage">이 게시글은 마약 거래 게시글일 가능성이 %로 </h2>
+                <h2 id="drugProbMessage">마약 거래 게시글일 가능성 확률</h2>
                 <p></p>
             </div>
+        <!--푸터 박스 부분-->
         <div class="footerBox">
             <p>로고이미지/아이콘</p>
             <br>

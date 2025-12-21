@@ -1,3 +1,6 @@
+# 숨겨야 하는 파일들 목록입니다. 여기에 있는 파일 및 폴더들은 push해도 깃허브에 올라가지 않아요.
+# 비밀번호, 지금 활용하고 있는 gemini api key 등 보안이 중요한 것들이 포함된 파일 및 폴더들은 여기에 숨겨둡니다.
+
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 

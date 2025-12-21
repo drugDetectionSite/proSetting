@@ -1,6 +1,11 @@
+# flask 앱을 생성하고 블루프린트 등록, 서버 실행 등의 역할을 맡은 파일입니다.
+# 남혜진 작업 파일
 from flask import Flask, render_template, request, jsonify
+from api.routes import bp
+from api.gemini import analyzeText_Gemini
 
 app = Flask(__name__)
+app.register_blueprint(bp)
 
 @app.route('/')
 def home():
@@ -9,6 +14,7 @@ def home():
 @app.route('/textAno')
 def textAno():
     # 백엔드에서 계산된 값 (실제 로직은 분석 결과에 따라 달라져야 함)
+    # 아래는 단순 테스트용입니다.
     
     # 1. 마약 종류 분석 결과 (예: 점수 85)
     score_from_analysis = 85 
@@ -28,7 +34,7 @@ def textAno():
         drug_prob=drug_prob,
         drug_kind=drug_kind
     )
-
+    
 @app.route('/drugDict')
 def drugDict():
     return render_template('drugDict.html')
@@ -38,21 +44,31 @@ def report():
     return render_template('report.html')
 
 # 새로운 분석 API 엔드포인트 추가
-@app.route('/api/analyze-text', methods=['POST'])
-def analyze_text():
+@app.route('/api/analyzeText', methods=['POST'])
+def analyzeText():
     # 클라이언트(JS)로부터 JSON 데이터를 받음
     data = request.get_json()
     text_to_analyze = data.get('text', '')
     
-    # ----------------------------------------------------
-    # 💡 실제 분석 및 계산 로직을 여기에 구현해야 합니다.
-    # 아래는 테스트를 위한 임시 계산 로직입니다.
-    # ----------------------------------------------------
+    ai_result = analyzeText_Gemini(text_to_analyze)
     
-    # 텍스트 길이에 따라 확률(prob) 계산 (테스트용)
+    prob_score = ai_result.get("probability", 0)
+
+    suspicious = {
+        "words": ai_result.get("suspicious_words", []),
+        "hashtags": ai_result.get("hashtags", []),
+        "methods": ai_result.get("methods", [])
+    }
+
+    # 테스트용 주석처리
+    '''
+    # 실제 분석 및 계산 로직을 여기에 구현해야 합니다.
+    # 아래는 테스트를 위한 임시 계산 로직.
+    
+    # 텍스트 길이에 따라 확률 계산 (테스트용)
     prob_score = min(len(text_to_analyze) * 5, 100) # 최대 100%
     
-    # 확률 점수에 따라 마약 종류(kind) 결정 (테스트용)
+    # 확률 점수에 따라 마약 종류 결정 (테스트용)
     if prob_score >= 90:
         kind = "코카인"
     elif prob_score >= 80:
@@ -62,7 +78,7 @@ def analyze_text():
     else:
         kind = "아편"
 
-    # 확률 점수에 따라 결과 문구(result_text) 결정
+    # 확률 점수에 따라 결과 문구 결정
     if prob_score >= 80:
         result_text = "아주 높습니다"
     elif prob_score >= 60:
@@ -71,14 +87,23 @@ def analyze_text():
         result_text = "보통입니다"
     else:
         result_text = "낮습니다"
-        
+    '''
+                
     # JSON 응답 생성
-    return jsonify({
-        'probability': prob_score,
-        'drug_kind': kind,
-        'prob_result_text': result_text
-    })
+    if ai_result.get("error") == "QUOTA_EXHAUSTED":
+        return jsonify({
+            "ai_used": False,
+            "probability": prob_score,
+            "message": "AI 사용량 초과 — 룰 기반 분석만 수행",
+            "suspicious": suspicious
+        })
 
+    # 정상 응답
+    return jsonify({
+        "ai_used": True,
+        "probability": prob_score,
+        "suspicious": suspicious
+    })
 
 if __name__ == '__main__':
     print("start")
