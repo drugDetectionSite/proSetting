@@ -4,7 +4,6 @@
 from api.db import get_db
 import re
 
-'''
 def insert_post(content):
     conn = get_db()
     try:
@@ -46,7 +45,6 @@ def get_post(post_id):
     cur.close()
     conn.close()
     return result
-'''
 
 SUSPICIOUS_WORDS = {
     "words": ["직거래", "퀵", "던짐", "좌표", "샘플", "비대면", "연락"],
