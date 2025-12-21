@@ -74,7 +74,36 @@ def show_drug_types():
             print(f"\n위험도: {row[4]}")
             
         conn.close()
+
+# 5. AI(Gemini)가 분석한 결과를 저장하는 함수 (2-2 테이블)
+def add_ai_detection(json_response):
+    conn = get_db()
+    if conn:
+        cursor = conn.cursor()
         
+        # 1) 파이썬 딕셔너리로 변경
+        data = json.loads(json_response)
+        
+        # 2) DB 테이블(tbl_Slang_Detection) 구조에 맞춰서 작성
+        sql = """
+            INSERT INTO tbl_Slang_Detection (InputText, LLM_Reason, DataType)
+            VALUES (%s, %s, %s)
+        """
+        
+        # 3) JSON의 키(Key) 이름을 확인해서 매칭
+        # 예: 프롬프트에 설정한 이름 유지
+        values = (
+            data.get('input_text'), 
+            data.get('reason'), 
+            data.get('result')
+        )
+        
+        cursor.execute(sql, values)
+        conn.commit()
+        
+        print("Gemini의 AI 분석 결과가 저장")
+        conn.close()
+
 SUSPICIOUS_WORDS = {
     "words": ["직거래", "퀵", "던짐", "좌표", "샘플", "비대면", "연락"],
     "hashtags": ["#던짐", "#퀵거래", "#직거래", "#비대면"],
