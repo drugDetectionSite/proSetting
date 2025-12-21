@@ -30,11 +30,21 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(res => res.json())
         .then(data => {
+            const prob = data.probability;
+
+            let probText = "낮습니다";
             let className = "probLow";
 
-            if (data.prob_result_text === "아주 높습니다") className = "probVeryHigh";
-            else if (data.prob_result_text === "높습니다") className = "probHigh";
-            else if (data.prob_result_text === "보통입니다") className = "probMedium";
+            if (prob >= 80) {
+                probText = "아주 높습니다";
+                className = "probVeryHigh";
+            } else if (prob >= 60) {
+                probText = "높습니다";
+                className = "probHigh";
+            } else if (prob >= 40) {
+                probText = "보통입니다";
+                className = "probMedium";
+            }
 
             if (kindMessageOut) {
                 kindMessageOut.textContent = `${data.drug_kind}의 가능성이 있음`;
@@ -42,10 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (probResultMessage) {
                 probResultMessage.innerHTML =
-                    `이 게시글은 마약 게시글일 가능성이 ${data.probability}%로 
-                     <span class="${className}">${data.prob_result_text}</span>`;
+                    `이 게시글은 마약 게시글일 가능성이 ${prob}%로 
+                    <span class="${className}">${probText}</span>`;
             }
         })
+
         .catch(err => {
             console.error(err);
             if (probResultMessage) {
@@ -90,25 +101,22 @@ document.querySelectorAll('.toggleContent textarea').forEach(textarea => {
     });
 });
 
-let isLoading = false;
+function renderSuspiciousParts(suspicious) {
+    const wordEl = document.getElementById('sus-word');
+    const hashEl = document.getElementById('sus-hashtag');
+    const methodEl = document.getElementById('sus-method');
 
-function analyzeText(text) {
-    if (isLoading) return;
-    if (text.trim() === "") return;
+    if (!suspicious) {
+        wordEl.textContent = "없음";
+        hashEl.textContent = "없음";
+        methodEl.textContent = "없음";
+        return;
+    }
 
-    isLoading = true;
-
-    fetch('/api/analyzeText', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text })
-    })
-    .then(res => res.json())
-    .then(data => {
-        // UI 업데이트
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
-        isLoading = false;
-    });
+    wordEl.textContent =
+        suspicious.words?.length ? suspicious.words.join(", ") : "없음";
+    hashEl.textContent =
+        suspicious.hashtags?.length ? suspicious.hashtags.join(", ") : "없음";
+    methodEl.textContent =
+        suspicious.methods?.length ? suspicious.methods.join(", ") : "없음";
 }

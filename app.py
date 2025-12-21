@@ -3,7 +3,6 @@
 from flask import Flask, render_template, request, jsonify
 from api.routes import bp
 from api.gemini import analyzeText_Gemini
-import re
 
 app = Flask(__name__)
 app.register_blueprint(bp)
@@ -53,16 +52,13 @@ def analyzeText():
     
     ai_result = analyzeText_Gemini(text_to_analyze)
     
-    prob_score = 0
-    kind = "없음"
+    prob_score = ai_result.get("probability", 0)
 
-    for line in ai_result.splitlines():
-        if line.startswith("확률"):
-            num = re.findall(r'\d+', line)
-            if num:
-                prob_score = int(num[0])
-        elif line.startswith("종류"):
-            kind = line.split(":")[1].strip()
+    suspicious = {
+        "words": ai_result.get("suspicious_words", []),
+        "hashtags": ai_result.get("hashtags", []),
+        "methods": ai_result.get("methods", [])
+    }
 
     # 테스트용 주석처리
     '''
@@ -81,7 +77,7 @@ def analyzeText():
         kind = "대마초" # 40~79점대를 위한 새로운 값 추가
     else:
         kind = "아편"
-    '''
+
     # 확률 점수에 따라 결과 문구 결정
     if prob_score >= 80:
         result_text = "아주 높습니다"
@@ -91,12 +87,22 @@ def analyzeText():
         result_text = "보통입니다"
     else:
         result_text = "낮습니다"
-        
+    '''
+                
     # JSON 응답 생성
+    if ai_result.get("error") == "QUOTA_EXHAUSTED":
+        return jsonify({
+            "ai_used": False,
+            "probability": prob_score,
+            "message": "AI 사용량 초과 — 룰 기반 분석만 수행",
+            "suspicious": suspicious
+        })
+
+    # 정상 응답
     return jsonify({
-        'probability': prob_score,
-        'drug_kind': kind,
-        'prob_result_text': result_text
+        "ai_used": True,
+        "probability": prob_score,
+        "suspicious": suspicious
     })
 
 if __name__ == '__main__':
