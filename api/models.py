@@ -1,7 +1,7 @@
 # INSERT, SELECT, DELETE, UPDATE 등 데이터를 조작하는 함수를 넣는 파일입니다.
 # SQL을 직접 실행하거나 ORM을 호출할 수 있으며 DB와 상호작용 가능합니다.
 # 유림님 코드 받아야됨
-from api.db import get_db
+from db import get_db
 import re
 
 # 1. 사용자 은어를 추가하는 함수 (3-2 테이블)
