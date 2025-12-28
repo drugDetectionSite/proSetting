@@ -59,19 +59,36 @@
    '''
 
 '''
-남이 한 거 가져오기
+남이 한 거 가져오기(처음하는 경우 1번, 아니면 2번부터)
 
-1. 가져올 브랜치로 옮김
+1. 클론 먼저 하기
+
+- clone: 깃허브 Repository에 있는 파일 내 로컬 컴퓨터로 복사해오는 작업.
+
+- 리포지토리 주소 복사하여 git bash에서 작업하는 위치 정한 후 git clone 명령어로 복제
+  https://ittrue.tistory.com/91
+
+- Git Bash에서 저장할 공간 정하기 - pwd 명령어를 통해 현재 위치 확인 후 cd 명령어로 이동 후 clone
+
+2. 가져올 브랜치 만들거나 기존 원하는 브랜치로 옮김
 
 - 메인 브랜치 내용을 가져온다면 터미널에 git checkout main 입력
 
-2. pull 받아오기
+- git branch 브랜치명: 브랜치 생성
+
+- git checkout -b 브랜치명: 브랜치를 생성하면서 옮기기
+
+- git checkout 브랜치명: 브랜치 가져오기
+
+3. pull 받아오기
 
 - git pull origin (브런치 이름)
 
-3. 새 브랜치 생성
+4. 새 브랜치 생성
 
 - 브랜치 새로 만들어두면 망쳐도 되돌리기 쉬움
 - git branch (브랜치명): 브랜치 만들기만 됨
 - git checkout -b (브랜치명): 브랜치 만들고 그 브랜치로 이동
 - 브랜치명은 보통 feat/작업할내용 으로 함.
+
+* 번외: git fetch나 git log로 내역 볼 수 있음
