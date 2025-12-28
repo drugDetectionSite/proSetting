@@ -8,6 +8,7 @@ import os
 # TODO 남혜진: .env(환경변수)에서 제미나이 키 호출을 위함
 from dotenv import load_dotenv
 import json
+import re
 from google.genai.errors import ClientError
 load_dotenv()
 
@@ -40,11 +41,14 @@ def analyzeText_Gemini(text):
 2. 글에 실제로 등장한 마약 은어, 거래 관련 단어를 suspicious_words로 추출하라.
 3. 글에 포함된 해시태그 중 마약 거래와 연관된 것만 hashtags로 추출하라.
 4. 글에 드러난 거래 방식(비대면, 좌표, 퀵 등)을 transaction_methods로 추출하라.
+5. 게시글에서 가장 가능성 높은 마약 종류를 drug_kind로 갯수는 상관 없이 추출하라.
+   (필로폰 / 대마초 / 코카인 / 특정 불가 중 하나)
 
 주의사항
 - 글에 실제로 등장한 표현만 추출할 것
 - 추론으로 만들어내지 말 것
 - 해당 항목이 없다면 빈 배열([])로 반환할 것
+- 설명, 문장, ```json 같은 마크다운을 절대 포함하지 말 것
 
 반드시 아래 JSON 형식으로만 출력하라:
 
@@ -52,7 +56,8 @@ def analyzeText_Gemini(text):
     "probability": 0,
     "suspicious_words": [],
     "hashtags": [],
-    "methods": []
+    "methods": [],
+    "drug_kind": []
     }}
 
 게시글:
@@ -64,14 +69,21 @@ def analyzeText_Gemini(text):
             # 남혜진: 콘텐츠로 프롬프트를 받아오겠다는 뜻
             contents=prompt
         )
-        result_text = response.text.strip()
+        raw = response.text.strip()
         # TODO 남혜진: 제미나이 출력 결과 콘솔에서 보기 위함, 제거해도 작동에는 이상이 없으나 문제가 생겼는지 확인 가능
-        print(result_text)
-        return json.loads(result_text)
+        print("RAW GEMINI:", raw)
+        json_match = re.search(r'\{[\s\S]*\}', raw)
+
+        if not json_match:
+            raise ValueError("JSON not found")
+
+        clean_json = json_match.group()
+        return json.loads(clean_json)
 
     # TODO 남혜진: 만약 프로그램 실행 중 아무거나 에러 발생 시 에러 객체 변수 e에 담을 것.
     # TODO 남혜진: 제미나이 API를 무료 버전으로 사용하느라 요청이 너무 많아지면 쿼터 초과에 걸리는 문제가 발생해 작성.
     except Exception as e: 
+        print("GEMINI ERROR:", e)
         # TODO 남혜진: 만약 에러 메시지에 요청이 너무 많다는 의미의 429라는 문자열이 포함되어 있거나 
         # TODO 남혜진: Gemini API에서 "RESOURCE_EXHAUSTED"라는 문구가 포함돼있을 경우(API 다 써서) 실행하는 조건문
         if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
@@ -81,7 +93,8 @@ def analyzeText_Gemini(text):
                 "probability": 0,
                 "suspicious_words": [],
                 "hashtags": [],
-                "methods": []
+                "methods": [],
+                "drug_kind": []
             }
         
         # TODO 남혜진: 기타 AI 호출 중 문제 발생(네트워크 오류, 응답 파싱 실패, 내부 에러 등...)
@@ -92,5 +105,6 @@ def analyzeText_Gemini(text):
             "probability": 0,
             "suspicious_words": [],
             "hashtags": [],
-            "methods": []
+            "methods": [],
+            "drug_kind": []
         }

@@ -5,23 +5,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //1. DOM 요소
     const textBox = document.getElementById('textBox1');
+    const analyzeBtn = document.getElementById('analyzeBtn');
     const kindMessageOut = document.getElementById('kindMessage');
     const probResultMessage = document.getElementById('drugProbMessage');
 
     //2. 초기 UI 상태
     if (kindMessageOut) kindMessageOut.textContent = "분석 대기 중";
-    if (probResultMessage) probResultMessage.textContent = "마약 거래 게시글 가능성 분석";
+    if (probResultMessage) {
+        probResultMessage.textContent = "마약 거래 게시글 가능성 분석";
+    }
 
     //3. 상태 변수
-    let debounceTimer = null;
     let isLoading = false;
+    let requestId = 0;
 
     //4. 분석 함수 (단 하나)
     function analyzeText(text) {
         if (isLoading) return;
-        if (!text || text.trim() === "") return;
+        // 빈 텍스트 차단을 위함, 최소 길이 조건
+        if (!text || text.trim().length < 3) {
+            alert("텍스트를 3자 이상 입력하세요");
+            return;
+        }
 
         isLoading = true;
+        const currentId = ++requestId;
 
         fetch('/api/analyzeText', {
             method: 'POST',
@@ -30,7 +38,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(res => res.json())
         .then(data => {
-            const prob = data.probability;
+            if (currentId !== requestId) {
+                console.log("이전 요청 응답 무시됨");
+                return;
+            }
+
+            console.log("API 응답:", data)
+
+            const prob = Number(data.probability);
+            renderSuspiciousParts(data.suspicious);
 
             let probText = "낮습니다";
             let className = "probLow";
@@ -45,23 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 probText = "보통입니다";
                 className = "probMedium";
             }
-
-            if (kindMessageOut) {
-                kindMessageOut.textContent = `${data.drug_kind}의 가능성이 있음`;
-            }
-
-            if (probResultMessage) {
-                probResultMessage.innerHTML =
+            kindMessageOut.textContent = `${data.drug_kind}의 가능성이 있음`;
+            probResultMessage.innerHTML =
                     `이 게시글은 마약 게시글일 가능성이 ${prob}%로 
                     <span class="${className}">${probText}</span>`;
-            }
+            console.log("probResultMessage DOM:", probResultMessage);
         })
 
         .catch(err => {
             console.error(err);
-            if (probResultMessage) {
-                probResultMessage.textContent = "분석 중 오류가 발생했습니다.";
-            }
+            probResultMessage.textContent = "분석 중 오류가 발생했습니다.";
         })
         .finally(() => {
             isLoading = false;
@@ -71,14 +80,9 @@ document.addEventListener('DOMContentLoaded', function () {
     /*
        5. 입력 이벤트 + debounce
     */
-    if (textBox) {
-        textBox.addEventListener('input', (e) => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                analyzeText(e.target.value);
-            }, 1000);
-        });
-    }
+    analyzeBtn.addEventListener('click', () => {
+        analyzeText(textBox.value);
+    });
 });
 
 // toggleHeader 클릭 시 변화
@@ -102,21 +106,31 @@ document.querySelectorAll('.toggleContent textarea').forEach(textarea => {
 });
 
 function renderSuspiciousParts(suspicious) {
-    const wordEl = document.getElementById('sus-word');
-    const hashEl = document.getElementById('sus-hashtag');
-    const methodEl = document.getElementById('sus-method');
+    console.log("RENDER suspicious:", suspicious);
 
-    if (!suspicious) {
-        wordEl.textContent = "없음";
-        hashEl.textContent = "없음";
-        methodEl.textContent = "없음";
+    const wordEl = document.getElementById('words');
+    const hashEl = document.getElementById('hashtags');
+    const methodEl = document.getElementById('methods');
+
+    console.log("DOM CHECK:", wordEl, hashEl, methodEl);
+
+    if (!wordEl || !hashEl || !methodEl) {
+        console.error("suspicious DOM 요소 못 찾음");
         return;
     }
 
     wordEl.textContent =
-        suspicious.words?.length ? suspicious.words.join(", ") : "없음";
+        suspicious.words && suspicious.words.length
+            ? suspicious.words.join(", ")
+            : "없음";
+
     hashEl.textContent =
-        suspicious.hashtags?.length ? suspicious.hashtags.join(", ") : "없음";
+        suspicious.hashtags && suspicious.hashtags.length
+            ? suspicious.hashtags.join(", ")
+            : "없음";
+
     methodEl.textContent =
-        suspicious.methods?.length ? suspicious.methods.join(", ") : "없음";
+        suspicious.methods && suspicious.methods.length
+            ? suspicious.methods.join(", ")
+            : "없음";
 }

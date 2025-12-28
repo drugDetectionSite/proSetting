@@ -1,4 +1,5 @@
 <!-- 남혜진 작업 파일 -->
+<!--사전 신고 페이지-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,21 +8,26 @@
         
     </head>
     <body style="height: 89vh">
+        <!--상단 네비게이션 바-->
         <nav id="reportNav">
             <a href="{{url_for('drugDict')}}">&lt;</a>
             <p>사전에 문제가 있나요?</p>
         </nav>
         <h2 class="reasonCho">사유를 선택해주세요.</h2>
+        <!--토글 박스로 접고 펼칠 수 있게 구현 및 해당하는 항목 펼쳐 내용 작성 가능하도록 함-->
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>존재하지 않는 단어가 있어요.</p>
+                <!--토글 버튼-->
                 <p class="toggleButton">▲</p>
             </button>
             <div class="toggleContent">
+                <!--1000자 제한 내용 작성란-->
                 <textarea maxlength="1000" placeholder="내용을 작성해주세요..."></textarea>
                 <div class="count">0/1000</div>
             </div>
         </div>
+        <!--토글 박스-->
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>뜻이 잘못되었어요.</p>
@@ -32,6 +38,7 @@
                 <div class="count">0/1000</div>
             </div>
         </div>
+        <!--토글 박스-->
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>예문/유의어가 잘못되었어요.</p>
@@ -42,6 +49,7 @@
                 <div class="count">0/1000</div>
             </div>
         </div>
+        <!--토글 박스-->
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>오타가 있어요.</p>
@@ -52,6 +60,7 @@
                 <div class="count">0/1000</div>
             </div>
         </div>
+        <!--토글 박스-->
         <div class="toggleBox">
             <button class="toggleHeader">
                 <p>기타 문제사항이 있어요.</p>
@@ -62,7 +71,7 @@
                 <div class="count">0/1000</div>
             </div>
         </div>
-
+        <!--신고버튼-->
         <button class="submitButton" type="submit">신고하기</button>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>

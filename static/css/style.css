@@ -10,12 +10,13 @@ body {
     color: #fff;
 }
 
-/* 상단 네비게이션 바 설정 */
+/* 상단 네비게이션 바 색상 및 사이즈 */
 nav {
     background-color: #1C1C1C;
     height: 60px;
 }
 
+/* 네비게이션 바 리스트 설정 */
 nav#nav1 ul {
     list-style: none;
     padding: 0;
@@ -24,6 +25,7 @@ nav#nav1 ul {
     gap: 20px;
 }
 
+/* 네비게이션 바 고정 및 형태 관련 */
 nav#nav1, #reportNav {
     display: flex;
     justify-content: space-between;
@@ -38,6 +40,7 @@ nav#nav1, #reportNav {
     box-sizing: border-box;
 }
 
+/* 신고 페이지 네비게이션 바 텍스트 설정 */
 #reportNav a{
     font-size: 28px;
     text-decoration: none;
@@ -47,6 +50,7 @@ nav#nav1 > a, #reportNav {
     font-size: 24px;
 }
 
+/* 신고 페이지 네비게이션 바 고정 */
 #reportNav p {
     position: absolute;
     left: 50%;
@@ -55,7 +59,7 @@ nav#nav1 > a, #reportNav {
 }
 
 /* 대부분의 글자 색상 흰색 설정 */
-#textBox1, .toggleHeader, a, .submitButton, .toggleContent textarea { 
+#textBox1, .toggleHeader, a, #analyzeBtn, .submitButton, .toggleContent textarea { 
     color: #fff;
 }
 
@@ -116,6 +120,7 @@ h3 {
     display: inline-block; 
 }
 
+/* a 링크 텍스트 디자인 설정 */
 .bannerTextAno a, .bannerDrugDict a {
     text-decoration: none;
     font-size: 22px;
@@ -219,7 +224,7 @@ h3 {
 }
 
 /* 선택 시 흰 테두리 */
-.searchBox:focus-within, .submitButton:active {
+.searchBox:focus-within, .submitButton:active #analyzeBtn:active {
     outline: 2px solid #ffffff;
 }
 
@@ -249,6 +254,7 @@ h3 {
     display: inline-flex;
 }
 
+/* 검색 및 토글 버튼 설정 */
 .searchButton, .toggleButton {
     background-color: transparent;
     float: right;
@@ -342,6 +348,7 @@ h3 {
     transition: max-height 0.3s ease;
 }
 
+/* 신고 내용 작성란 설정 */
 .toggleContent textarea {
     width: 100%;
     height: 300px;
@@ -389,12 +396,19 @@ h3 {
     transform: rotate(180deg);
 }
 
-.submitButton {
-    margin-top: 150px;
-    width: 100%;
+/* 신고, 분석 버튼 */
+.submitButton, #analyzeBtn {
     border: none;
     height: 80px;
     background-color: #5987ff;
     border-radius: 10px;
     font-size: 20px;
+}
+.submitButton {
+    margin-top: 150px;
+    width: 100%;
+}
+#analyzeBtn {
+    margin: 0;
+    width: 1280px;
 }
