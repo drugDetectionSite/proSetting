@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isLoading) return;
         // 빈 텍스트 차단을 위함, 최소 길이 조건
         if (!text || text.trim().length < 3) {
-            alert("텍스트를 3자 이상 입력하세요");
+            alert("텍스트를 3자 이상 입력해주세요");
             return;
         }
 
@@ -38,12 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(res => res.json())
         .then(data => {
-            if (currentId !== requestId) {
-                console.log("이전 요청 응답 무시됨");
-                return;
-            }
-
-            console.log("API 응답:", data)
+            if (currentId !== requestId) return;
 
             const prob = Number(data.probability);
             renderSuspiciousParts(data.suspicious);
@@ -65,9 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             probResultMessage.innerHTML =
                     `이 게시글은 마약 게시글일 가능성이 ${prob}%로 
                     <span class="${className}">${probText}</span>`;
-            console.log("probResultMessage DOM:", probResultMessage);
         })
-
         .catch(err => {
             console.error(err);
             probResultMessage.textContent = "분석 중 오류가 발생했습니다.";
