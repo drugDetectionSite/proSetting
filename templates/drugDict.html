@@ -12,7 +12,6 @@
             <ul>
                 <li><a href="{{url_for('textAno')}}">텍스트 분석</a></li>
                 <li><a href="{{url_for('drugDict')}}">마약 은어 사전</a></li>
-                <li><a href="#">이미지</a></li>
             </ul>
         </nav>
         <!--마약 은어 사전 검색 부분-->
@@ -31,6 +30,7 @@
         <!--마약 은어와 뜻 등 사전 기능 출력-->
         <div class="drugSlangBox">
             <h2>마약류 은어</h2>
+            <br>
             <p>
                 <ul class="slangBox">
                     <li id="slangTerm">은어1: </li>
@@ -44,33 +44,9 @@
                     </ul>
                 </ul>
             </p>
+            <a class="report" href="{{url_for('report')}}">사전에 문제가 있나요?</a>
         </div>
-        <!--은어 추가 부분-->
-        <div class="addWordBox">
-            <h2>사전에 없는 단어가 있다면 추가해주세요</h2>
-            <form class="searchBox">
-                <input class="textBox3" type="text" placeholder="단어 추가...">
-                <button class="searchButton" type="submit">
-                    <img src="../static/images/add.png" alt="addIcon">
-                </button>
-            </form>
-            <h3 class="resultBox">양식</h3>
-            <p>
-                <p>
-                    <ul class="slangBox">
-                        <li>은어1: </li>
-                        <ol>
-                            <li>뜻 1</li>
-                            <li>뜻 2</li>
-                        </ol>
-                        <ul class="slangExBox">
-                            <li>예문: 예문 내용들</li>
-                            <li>유의어: 유의어단어</li>
-                        </ul>
-                    </ul>
-                </p>
-                <a class="report" href="{{url_for('report')}}">사전에 문제가 있나요?</a>
-            </p>
+        <div class="resultBox">
         </div>
         <!--푸터 박스-->
         <div class="footerBox">

@@ -103,7 +103,7 @@ h3 {
     outline: 1.5px solid #5987ff;
 }
 
-.addWordBox, #textBox1, .banner {
+#textBox1, .banner {
     background-color: #1B2637;
     padding: 40px;
     text-align: left;
@@ -160,8 +160,8 @@ h3 {
 }
 
 /* 글자 출력되는 부분들 화면 사이즈 조정 */
-.suspectPartBox, .drugProbBox, .drugSlangBox, .addWordBox {
-    min-height: 600px;
+.suspectPartBox, .drugProbBox, .drugSlangBox {
+    min-height: 500px;
     line-height: 2;
     font-size: 22px;
     padding-left: 200px;
@@ -183,7 +183,7 @@ h3 {
 }
 
 .drugSlangBox{
-    padding-bottom: 100px;
+    padding-bottom: 40px;
     padding-top: 40px;
 }
 
@@ -234,14 +234,14 @@ h3 {
 
 /* 마약 가능성 표시란 */
 #kindMessage{
-  padding-top: 250px;
+  padding-top: 100px;
   margin: auto;
   text-align: center;
   display: inline-block;
 }
 
 /* 글자 입력받는 검색용 박스 */
-.textBox2, .textBox3 {
+.textBox2 {
     background: none;
     font-size: 20px;
     border: none;
@@ -270,11 +270,6 @@ h3 {
 .toggleButton {
     justify-content: center;
     align-items: center;
-}
-
-.addWordBox {
-    text-align: center;
-    padding-bottom: 60px;
 }
 
 /* 가장 하단 푸터 박스 */
@@ -404,6 +399,7 @@ h3 {
     background-color: #5987ff;
     border-radius: 10px;
     font-size: 20px;
+    cursor: pointer;
 }
 .submitButton {
     margin-top: 150px;
