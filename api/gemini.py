@@ -109,7 +109,6 @@ def analyzeText_Gemini(text):
             "drug_kind": []
         }
     
-    
 # TODO 남혜진: 은어 사전 부분
 def search_slang_with_gemini(term):
     model = "gemini-2.5-flash"
