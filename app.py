@@ -128,7 +128,11 @@ def slang_search():
     result = search_slang_with_gemini(term)
     return jsonify(result)
 
+# 배포 전 코드
+#if __name__ == '__main__':
+#    print("start")
+#   app.run(debug=True)
 
-if __name__ == '__main__':
-    print("start")
-    app.run(debug=True)
+# 배포 후 코드
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
