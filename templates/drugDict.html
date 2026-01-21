@@ -19,8 +19,8 @@
         <div class="drugDictBox">
             <h2>마약 은어 사전</h2>
             <form class="searchBox">
-                <input class="textBox2" type="text" placeholder="마약 거래 관련 단어를 입력해주세요...">
-                <button class="searchButton" type="submit">
+                <input class="textBox2" id="slangInput" type="text" placeholder="마약 거래 관련 단어를 입력해주세요...">
+                <button class="searchButton" id="slangSearchBtn" type="submit">
                     <img src="../static/images/searchIcon.png" alt="searchIcon">
                 </button>
             </form>
@@ -32,33 +32,17 @@
         <div class="drugSlangBox">
             <h2>마약류 은어</h2>
             <p>
-                <p>
-                    <ul class="slangBox">
-                        <li>은어1: </li>
-                        <ol>
-                            <li>뜻 1</li>
-                            <li>뜻 2</li>
-                        </ol>
-                        <ul class="slangExBox">
-                            <li>예문: 예문 내용들</li>
-                            <li>유의어: 유의어단어</li>
-                        </ul>
+                <ul class="slangBox">
+                    <li id="slangTerm">은어1: </li>
+                    <ol id="slangDefinitions">
+                        <li>뜻 1</li>
+                        <li>뜻 2</li>
+                    </ol>
+                    <ul class="slangExBox">
+                        <li id="slangExample">예문: 예문 내용들</li>
+                        <li id="slangRelated">유의어: 유의어단어</li>
                     </ul>
-                    <br>
-                </p>
-                <p>
-                    <ul class="slangBox">
-                        <li>은어2: </li>
-                        <ol>
-                            <li>뜻 1</li>
-                            <li>뜻 2</li>
-                        </ol>
-                        <ul class="slangExBox">
-                            <li>예문: 예문 내용들</li>
-                            <li>유의어: 유의어단어</li>
-                        </ul>
-                    </ul>
-                </p>
+                </ul>
             </p>
         </div>
         <!--은어 추가 부분-->
@@ -99,5 +83,6 @@
             <a href="#">SNS링크1</a>
             <a href="#">SNS링크2</a>
         </div>
+        <script src="{{ url_for('static', filename='js/slangDict.js') }}"></script>
     </body>
 </html>

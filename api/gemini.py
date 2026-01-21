@@ -108,3 +108,53 @@ def analyzeText_Gemini(text):
             "methods": [],
             "drug_kind": []
         }
+    
+    
+# TODO 남혜진: 은어 사전 부분
+def search_slang_with_gemini(term):
+    model = "gemini-2.5-flash"
+
+    prompt = f"""
+다음 단어가 마약 거래와 관련된 은어인지 분석하라.
+
+조건:
+- 실제 알려진 마약 은어일 경우에만 설명할 것
+- 추측하지 말 것
+- 정보가 불확실하면 "unknown"으로 반환할 것
+- 마크다운, 설명 문장, ```json 절대 금지
+
+반드시 아래 JSON 형식으로만 출력하라:
+
+{{
+  "term": "",
+  "definitions": [],
+  "example": "",
+  "related_terms": []
+}}
+
+단어:
+\"\"\"{term}\"\"\"
+"""
+
+    try:
+        response = client.models.generate_content(
+            model=model,
+            contents=prompt
+        )
+
+        raw = response.text.strip()
+        json_match = re.search(r'\{[\s\S]*\}', raw)
+
+        if not json_match:
+            raise ValueError("JSON not found")
+
+        return json.loads(json_match.group())
+
+    except Exception as e:
+        return {
+            "term": term,
+            "definitions": [],
+            "example": "",
+            "related_terms": [],
+            "error": str(e)
+        }

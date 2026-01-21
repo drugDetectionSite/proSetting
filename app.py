@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, jsonify
 from api.routes import bp
 from api.gemini import analyzeText_Gemini
+from api.gemini import search_slang_with_gemini
 
 DRUG_KEYWORDS = {
     "필로폰": ["아이스", "작대기", "히로뽕"],
@@ -113,6 +114,20 @@ def analyzeText():
         "drug_kind": drug_kind,
         "suspicious": suspicious
     })
+
+# 은어 사전 부분
+
+@app.route('/api/slangSearch', methods=['POST'])
+def slang_search():
+    data = request.get_json()
+    term = data.get("term", "").strip()
+
+    if not term:
+        return jsonify({"error": "term required"}), 400
+
+    result = search_slang_with_gemini(term)
+    return jsonify(result)
+
 
 if __name__ == '__main__':
     print("start")

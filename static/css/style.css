@@ -261,6 +261,7 @@ h3 {
     width: 50px;
     height: 100%;
     border: none; 
+    cursor: pointer;
     display: inline-flex;
     border-radius: 5px;
     transition: transform 0.3s;
