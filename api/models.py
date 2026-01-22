@@ -1,6 +1,6 @@
 # INSERT, SELECT, DELETE, UPDATE 등 데이터를 조작하는 함수를 넣는 파일입니다.
 # SQL을 직접 실행하거나 ORM을 호출할 수 있으며 DB와 상호작용 가능합니다.
-# 백엔드팀 정유림님 작성 코드
+# 백엔드팀 작성 코드
 
 from .db import execute_query, fetch_all
 import json

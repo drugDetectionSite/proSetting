@@ -1,5 +1,5 @@
 # flask 앱을 생성하고 블루프린트 등록, 서버 실행 등의 역할을 맡은 파일입니다.
-# 남혜진 작업 파일
+# 프론트팀 작업 파일
 from flask import Flask, render_template, request, jsonify
 from api.routes import bp
 from api.gemini import analyzeText_Gemini

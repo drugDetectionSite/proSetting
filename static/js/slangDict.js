@@ -1,4 +1,4 @@
-// 남혜진 작업 파일
+// 프론트팀 작업 파일
 // 은어 사전
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -1,5 +1,5 @@
 -- Table, Trigger 등을 생성합니다. 초깃값이므로 최초 한 번만 실행합니다.
--- 전체 코드 백앤드팀 정유림님 작성(테이블, 트리거 작성 코드)
+-- 전체 코드 백앤드팀 작성(테이블, 트리거 작성 코드)
 -- 1-1) 마약 종류 
 CREATE TABLE tbl_Drug_Types ( 
     DrugID INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 

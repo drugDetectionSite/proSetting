@@ -1,4 +1,4 @@
-// 남혜진 작업 파일
+// 프론트팀 작업 파일
 
 // 가장 가능성 높은 마약 종류 출력
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,6 +1,6 @@
 # DB 접속 코드 등 전반적인 설정이 담긴 파일입니다.
 
-# 정유림님 작업 코드(DB 접속 코드)
+# 백앤드팀 작업 코드(DB 접속 코드)
 
 import mysql.connector
 import os
@@ -9,8 +9,7 @@ from dotenv import load_dotenv
 # .env에 숨겨둔 키를 가져와줍니다.
 load_dotenv()
 
-# 수정 남혜진: 유림님이 작성해주신 내용 조금 수정했습니다. 
-# 수정 남혜진: 보안을 위해 환경변수를 지정하였습니다.
+# TODO 프론트: 보안을 위해 환경변수를 지정하였습니다.
 DB_CONFIG = {
     "host": os.getenv("DB_HOST"),
     "user": os.getenv("DB_USER"),

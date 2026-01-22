@@ -1,5 +1,5 @@
 # 커넥션 풀 유틸 함수 등 DB를 연결하는 파일입니다.
-# 백엔드팀 정유림님 작성 코드
+# 백엔드팀 작성 코드
 
 import mysql.connector
 from config import DB_CONFIG
