@@ -89,7 +89,7 @@ h3 {
 #textBox1 {
     margin: 50px;
     margin-top: 10px;
-    /* width: 100px; */
+    /* width: 1200px; */
     width: 100%;
     max-width: 1200px;
     height: 400px;
@@ -99,6 +99,7 @@ h3 {
     outline: none;
     padding: 30px;
     display: inline-block; 
+    align-items: center;
 }
 
 /* 해당 글자 입력란 선택 시 아웃라인 나타남 */
