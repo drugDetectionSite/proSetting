@@ -88,7 +88,9 @@ h3 {
 #textBox1 {
     margin: 50px;
     margin-top: 10px;
-    width: 1200px;
+    /* width: 100px; */
+    width: 100%;
+    max-width: 1200px;
     height: 400px;
     font-size: 20px;
     resize: none;
@@ -112,7 +114,9 @@ h3 {
 
 /* 메인 페이지 배너 설정 */
 .banner {    
-    width: 1200px;
+    /* width: 100px; */
+    width: 100%;
+    max-width: 1200px;
     font-size: 22px;
     height: 620px;
     padding-left: 80px;
@@ -193,7 +197,9 @@ h3 {
 }
 
 .lineBox, .lineBox2 {
-    width: 220px;
+    /* width: 220px; */
+    width: 100%;
+    max-width: 220px;
     padding: 0 30px 0 30px;
 }
 
@@ -203,7 +209,9 @@ h3 {
 }
 
 .resultBox {
-    width: 1220px;
+    /* width: 1220px; */
+    width: 100%;
+    max-width: 1220px;
     height: 40px;
     padding: 30px;
     display: inline-block;
@@ -211,7 +219,9 @@ h3 {
 
 /* 파란 테두리 네모 상자 */
 .searchBox, .toggleHeader {
-    width: 700px;
+    /* width: 700px; */
+    width: 100%;
+    max-width: 700px;
     height: 50px;
     text-align: center;
     display: inline-block;
@@ -248,7 +258,9 @@ h3 {
     outline: none;
     float: left;
     color: #7C7C7C;
-    width: 535px;
+    /* width: 535px */
+    width: 100%;
+    max-width: 535px;
     padding: 15px;
     padding-right: 0;
     display: inline-flex;
@@ -258,7 +270,9 @@ h3 {
 .searchButton, .toggleButton {
     background-color: transparent;
     float: right;
-    width: 50px;
+    /* width: 50px; */
+    width: 100px;
+    max-width: 50px;
     height: 100%;
     border: none; 
     cursor: pointer;
@@ -329,6 +343,7 @@ h3 {
     font-size: 18px;
     margin-bottom: 0;
     width: 100%;
+    max-width: 1280px;
 }
 
 .reasonCho {
@@ -407,5 +422,7 @@ h3 {
 }
 #analyzeBtn {
     margin: 0;
-    width: 1280px;
+    /* width: 1280px; */
+    width: 100%;
+    max-width: 1280px;
 }
